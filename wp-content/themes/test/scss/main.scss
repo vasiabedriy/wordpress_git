@@ -1,0 +1,89 @@
+@mixin full-screen{
+    width: 100%;
+    height: 100vh;
+}
+@mixin pos-top-left{
+    position: fixed!important;
+    top: 0;
+    left: 0;
+}
+@mixin content{
+    width: 90%;
+    margin: 5%;
+}
+$dark: #101010;
+
+#map {
+    @include full-screen;
+    @include pos-top-left;
+}
+
+.title{
+    @include pos-top-left;
+    padding-left: 100px;
+    font: {
+        size: 40px;
+        weight: bold;
+    }
+    z-index: 20;
+}
+.title_photo{
+    width: 100%;
+    text-align: center;
+    font: {
+        size: 40px;
+        weight: bold;
+    }
+}
+
+.container{
+    @include content;
+    .photo{
+        a{
+            margin-bottom: 50px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+a.progressive {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  outline: none;
+    img {
+      display: block;
+      width: 100%;
+      max-width: none;
+      height: auto;
+      border: 0 none;
+        .preview {
+          filter: blur(2vw);
+          transform: scale(1.05);
+        }
+    }
+}
+
+a.progressive:not(.replace) {
+  cursor: default;
+}
+
+a.progressive img.reveal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform, opacity;
+  animation: reveal 1s ease-out;
+}
+
+@keyframes reveal {
+  0% {transform: scale(1.05); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+.firstHeading{
+    text-align: center;
+}
